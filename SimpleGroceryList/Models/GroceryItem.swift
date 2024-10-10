@@ -11,7 +11,7 @@ import SwiftData
 @Model
 class GroceryItem {
     var title: String
-    var inList: [GroceryList]?
+    var inList = [GroceryList]()
     
     init(title: String) {
         self.title = title

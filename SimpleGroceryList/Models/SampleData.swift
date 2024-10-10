@@ -18,9 +18,9 @@ class SampleData {
         modelContainer.mainContext
     }
     
-//    var friend: List {
-//        Friend.sampleData.first!
-//    }
+    var groceryList: GroceryList {
+        GroceryList.sampleData.first!
+    }
     
     var groceryItem: GroceryItem {
         GroceryItem.sampleData.first!
@@ -28,7 +28,7 @@ class SampleData {
     
     private init() {
         let schema = Schema([
-//            Friend.self,
+            GroceryList.self,
             GroceryItem.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
@@ -45,17 +45,33 @@ class SampleData {
     }
     
     private func insertSampleData() {
-//        for friend in Friend.sampleData {
-//            context.insert(friend)
-//        }
+        for groceryList in GroceryList.sampleData {
+            context.insert(groceryList)
+        }
         
         for groceryItem in GroceryItem.sampleData {
             context.insert(groceryItem)
         }
         
-//        Friend.sampleData[0].favoriteMovie = Movie.sampleData[1]
-//        Friend.sampleData[2].favoriteMovie = Movie.sampleData[0]
-//        Friend.sampleData[3].favoriteMovie = Movie.sampleData[4]
-//        Friend.sampleData[4].favoriteMovie = Movie.sampleData[0]
+        GroceryList.sampleData[0].items = [
+            GroceryItem.sampleData[1],
+            GroceryItem.sampleData[2],
+            GroceryItem.sampleData[3]
+        ]
+        GroceryList.sampleData[1].items = [
+            GroceryItem.sampleData[0],
+            GroceryItem.sampleData[1]
+        ]
+        GroceryList.sampleData[2].items = [
+            GroceryItem.sampleData[4]
+        ]
+        GroceryList.sampleData[3].items = [
+            GroceryItem.sampleData[0],
+            GroceryItem.sampleData[1],
+            GroceryItem.sampleData[2],
+            GroceryItem.sampleData[3],
+            GroceryItem.sampleData[4],
+            GroceryItem.sampleData[5]
+        ]
     }
 }
